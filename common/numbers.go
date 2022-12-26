@@ -31,3 +31,22 @@ func Max[N Number](cur N, check ...N) N {
 	}
 	return nmax
 }
+
+func GCD[N Number](a, b N) N {
+	for b != 0 {
+		t := b
+		b = a % b
+		a = t
+	}
+	return a
+}
+
+func LCM[N Number](a, b N, nums ...N) N {
+	result := a * b / GCD(a, b)
+
+	for i := 0; i < len(nums); i++ {
+		result = LCM(result, nums[i])
+	}
+
+	return result
+}
