@@ -12,16 +12,21 @@ import (
 )
 
 func main() {
-	if len(os.Args) == 1 {
-		log.Fatal("need puzzle number")
-	}
-	snum, err := strconv.Atoi(os.Args[1])
-	if err != nil {
-		log.Fatal("invalid puzzle number", os.Args[1])
-	}
-
 	start := time.Now()
-	ans := puzzle.Solve(snum)
-	fmt.Println("Answer:", ans)
+	if len(os.Args) == 1 {
+		all := puzzle.AllPuzzles()
+		for _, puzzle := range all {
+			fmt.Println("Puzzle", puzzle.Num)
+			fmt.Println("Answer:", puzzle.Solver.Solve())
+		}
+	} else {
+		snum, err := strconv.Atoi(os.Args[1])
+		if err != nil {
+			log.Fatal("invalid puzzle number", os.Args[1])
+		}
+
+		ans := puzzle.Solve(snum)
+		fmt.Println("Answer:", ans)
+	}
 	fmt.Println("Time", time.Since(start))
 }

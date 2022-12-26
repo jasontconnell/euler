@@ -1,7 +1,14 @@
 package puzzle
 
+import "sort"
+
 type Registry struct {
 	puzzles map[int]Solver
+}
+
+type Puzzle struct {
+	Num    int
+	Solver Solver
 }
 
 var registry *Registry
@@ -24,9 +31,24 @@ func Register(n int, s Solver) {
 }
 
 func Solve(n int) Answer {
+	ensureRegistry()
 	s, ok := registry.puzzles[n]
 	if !ok {
 		return Answer{}
 	}
 	return s.Solve()
+}
+
+func AllPuzzles() []Puzzle {
+	ensureRegistry()
+	list := []int{}
+	for k := range registry.puzzles {
+		list = append(list, k)
+	}
+	sort.Ints(list)
+	solvers := []Puzzle{}
+	for _, n := range list {
+		solvers = append(solvers, Puzzle{Num: n, Solver: registry.puzzles[n]})
+	}
+	return solvers
 }
