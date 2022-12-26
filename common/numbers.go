@@ -32,6 +32,14 @@ func Max[N Number](cur N, check ...N) N {
 	return nmax
 }
 
+func Sum[N Number](list []N) N {
+	var init N
+	for _, n := range list {
+		init += n
+	}
+	return init
+}
+
 func GCD[N Number](a, b N) N {
 	for b != 0 {
 		t := b
