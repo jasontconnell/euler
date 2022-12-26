@@ -11,7 +11,7 @@ if (-not (Test-Path -Path ".\puzzles")) {
     New-Item -Path ".\puzzles" -ItemType "directory"
 }
 
-$alphanum = $puzzle.PadLeft(4-$puzzle.Length, "0")
+$alphanum = $puzzle.PadLeft(3, "0")
 if (-not (Test-Path -Path ".\puzzles\$alphanum.go")) {
 
     $contents = Get-Content -Path ".\boilerplate\solve.txt"
