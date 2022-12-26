@@ -11,10 +11,10 @@ func init() {
 type Puzzle002 struct{}
 
 func (p Puzzle002) Solve() puzzle.Answer {
-	return puzzle.FromValue(sumEvenFibs(4_000_000))
+	return puzzle.FromValue(p.sumEvenFibs(4_000_000))
 }
 
-func sumEvenFibs(high int) int {
+func (p Puzzle002) sumEvenFibs(high int) int {
 	prev := 1
 	cur := 1
 	sum := 0

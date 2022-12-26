@@ -11,10 +11,10 @@ func init() {
 type Puzzle005 struct{}
 
 func (p Puzzle005) Solve() puzzle.Answer {
-	return puzzle.FromValue(smallestPossibleDivisibleByRange(1, 20))
+	return puzzle.FromValue(p.smallestPossibleDivisibleByRange(1, 20))
 }
 
-func smallestPossibleDivisibleByRange(start, end int) int {
+func (p Puzzle005) smallestPossibleDivisibleByRange(start, end int) int {
 	n := 1
 	for i := start; i <= end; i++ {
 		n *= i

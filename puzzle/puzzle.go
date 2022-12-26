@@ -7,8 +7,7 @@ type Solver interface {
 }
 
 type Answer struct {
-	value  string
-	Solved bool
+	value string
 }
 
 func FromValue(value interface{}) Answer {

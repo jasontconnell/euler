@@ -11,12 +11,12 @@ func init() {
 type Puzzle006 struct{}
 
 func (p Puzzle006) Solve() puzzle.Answer {
-	s := sumSquares(1, 100)
-	ss := sumRange(1, 100)
+	s := p.sumSquares(1, 100)
+	ss := p.sumRange(1, 100)
 	return puzzle.FromValue(ss*ss - s)
 }
 
-func sumRange(start, end int) int {
+func (p Puzzle006) sumRange(start, end int) int {
 	n := 0
 	for i := start; i <= end; i++ {
 		n += i
@@ -24,7 +24,7 @@ func sumRange(start, end int) int {
 	return n
 }
 
-func sumSquares(start, end int) int {
+func (p Puzzle006) sumSquares(start, end int) int {
 	n := 0
 	for i := start; i <= end; i++ {
 		n += i * i
