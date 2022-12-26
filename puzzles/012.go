@@ -39,15 +39,10 @@ func (p Puzzle012) divisors(n int) int {
 	}
 
 	for i := common.Sqrt(n); i >= 2; i-- {
-		// if c, ok := m[i]; ok && n%i == 0 {
-		// 	count += c
-		// 	break
-		// }
 		if n%i == 0 {
 			count += 2 // i + i*?
 		}
 	}
 	// count 1 and n
-	// m[n] = count + 2
 	return count + 2
 }
