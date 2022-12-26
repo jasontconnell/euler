@@ -1,0 +1,15 @@
+package puzzles
+
+import (
+	"github.com/jasontconnell/euler/puzzle"
+)
+
+func init(){
+	puzzle.Register(#0#, Puzzle#1#{})
+}
+
+type Puzzle#1# struct {}
+
+func (p Puzzle#1#) Solve() puzzle.Answer {
+	return false
+}
