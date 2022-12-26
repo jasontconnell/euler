@@ -35,6 +35,6 @@ You can compile the project with `go build` but I typically just run `main.go`. 
 
 There are currently 822 puzzles on Project Euler so the 00n naming convention is necessary.
 
-The puzzle returns an `Answer` object which is usually just initialized with `puzzle.FromAnswer([the answer])` and prints out the answer and the time it took to solve it.
+The puzzle returns an `Answer` object which is usually just initialized with `puzzle.FromValue([the answer])` and prints out the answer and the time it took to solve it.
 
 Feel free to learn from this but the overall purpose of Project Euler is to learn how to solve the problems, not to just input a correct answer for each one :)
