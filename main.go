@@ -1,8 +1,10 @@
 package main
 
 import (
-	"flag"
 	"fmt"
+	"log"
+	"os"
+	"strconv"
 	"time"
 
 	"github.com/jasontconnell/euler/puzzle"
@@ -10,11 +12,16 @@ import (
 )
 
 func main() {
-	pn := flag.Int("num", 0, "puzzle number")
-	flag.Parse()
+	if len(os.Args) == 1 {
+		log.Fatal("need puzzle number")
+	}
+	snum, err := strconv.Atoi(os.Args[1])
+	if err != nil {
+		log.Fatal("invalid puzzle number", os.Args[1])
+	}
 
 	start := time.Now()
-	ans := puzzle.Solve(*pn)
+	ans := puzzle.Solve(snum)
 	fmt.Println("Answer:", ans)
 	fmt.Println("Time", time.Since(start))
 }
