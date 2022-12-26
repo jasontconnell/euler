@@ -11,5 +11,5 @@ func init(){
 type Puzzle#1# struct {}
 
 func (p Puzzle#1#) Solve() puzzle.Answer {
-	return false
+	return puzzle.FromValue(0)
 }
