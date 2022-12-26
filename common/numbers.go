@@ -21,3 +21,13 @@ func IsPrime[N Number](n N) bool {
 func Sqrt[N Number](n N) N {
 	return N(math.Sqrt(float64(n)))
 }
+
+func Max[N Number](cur N, check ...N) N {
+	nmax := cur
+	for _, n := range check {
+		if n > nmax {
+			nmax = n
+		}
+	}
+	return nmax
+}
