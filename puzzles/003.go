@@ -17,13 +17,10 @@ func (p Puzzle003) Solve() puzzle.Answer {
 
 func (p Puzzle003) largestPrimeFactor(n int) int {
 	max := 0
-	for i := 2; i < n/2; i++ {
+	for i := 2; i < common.Sqrt(n)+1; i++ {
 		if n%i == 0 {
 			if common.IsPrime(i) && i > max {
 				max = i
-			}
-			if common.IsPrime(n / i) {
-				break
 			}
 		}
 	}
