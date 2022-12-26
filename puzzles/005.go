@@ -21,7 +21,7 @@ func (p Puzzle005) smallestPossibleDivisibleByRange(start, end int) int {
 	}
 
 	result := 0
-	for i := end; i <= n; i++ {
+	for i := end; i <= n; i += end {
 		c := true
 		for j := start; j <= end; j++ {
 			if i%j != 0 {
