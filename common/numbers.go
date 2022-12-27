@@ -1,6 +1,9 @@
 package common
 
-import "math"
+import (
+	"math"
+	"sort"
+)
 
 type Number interface {
 	int | int64 | int32 | int16 | uint64 | uint32 | uint16
@@ -38,6 +41,26 @@ func Sum[N Number](list []N) N {
 		init += n
 	}
 	return init
+}
+
+func Divisors[N Number](n N, order bool) []N {
+	if IsPrime(n) {
+		return []N{1, n}
+	}
+
+	list := []N{}
+	for i := Sqrt(n); i >= 2; i-- {
+		if n%i == 0 {
+			list = append(list, i, n/i)
+		}
+	}
+	list = append([]N{1}, list...)
+	if order {
+		sort.Slice(list, func(i, j int) bool {
+			return list[i] < list[j]
+		})
+	}
+	return list
 }
 
 func GCD[N Number](a, b N) N {
