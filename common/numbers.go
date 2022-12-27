@@ -58,3 +58,23 @@ func LCM[N Number](a, b N, nums ...N) N {
 
 	return result
 }
+
+func BigNumberCalc[N Number](initial N, max int, op func(idx int, n N) N) []N {
+	digits := []N{initial}
+	for i := 1; i < max; i++ {
+		var carry N
+		for j := len(digits) - 1; j >= 0; j-- {
+			x := op(i, digits[j]) + carry
+			digit := x % 10
+			carry = x / 10
+			digits[j] = digit
+		}
+		c := carry
+		for c > 0 {
+			digit := c % 10
+			digits = append([]N{digit}, digits...)
+			c /= 10
+		}
+	}
+	return digits
+}
