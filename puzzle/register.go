@@ -1,6 +1,9 @@
 package puzzle
 
-import "sort"
+import (
+	"fmt"
+	"sort"
+)
 
 type Registry struct {
 	puzzles map[int]Solver
@@ -34,7 +37,7 @@ func Solve(n int) Answer {
 	ensureRegistry()
 	s, ok := registry.puzzles[n]
 	if !ok {
-		return Answer{}
+		return FromValue(fmt.Sprintf("No solution for puzzle %d", n))
 	}
 	return s.Solve()
 }
