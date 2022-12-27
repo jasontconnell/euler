@@ -1,8 +1,6 @@
 package puzzles
 
 import (
-	"fmt"
-
 	"github.com/jasontconnell/euler/common"
 	"github.com/jasontconnell/euler/puzzle"
 )
@@ -63,9 +61,6 @@ func (p Puzzle015) traverse(start, goal common.Point2D, g map[common.Point2D]boo
 
 		if cur == goal {
 			num++
-			if num%10000 == 0 {
-				fmt.Println(len(q), num)
-			}
 			continue
 		}
 
