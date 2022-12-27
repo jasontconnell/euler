@@ -25,14 +25,14 @@ func (p Puzzle021) sumAmicableNums(max int) int {
 		if common.IsPrime(i) {
 			continue
 		}
-		diva := common.Divisors(i, false)
+		diva := common.ProperDivisors(i)
 		suma := common.Sum(diva)
 
 		if common.IsPrime(suma) {
 			continue
 		}
 
-		divb := common.Divisors(suma, false)
+		divb := common.ProperDivisors(suma)
 		sumb := common.Sum(divb)
 
 		if sumb == i && suma != sumb {

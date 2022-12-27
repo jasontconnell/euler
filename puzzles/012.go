@@ -21,7 +21,7 @@ func (p Puzzle012) maxDivisibleTriangleNum(min int) int {
 	result := 0
 
 	for {
-		d := common.Divisors(s, false)
+		d := common.ProperDivisors(s)
 		if len(d) > min {
 			result = s
 			break

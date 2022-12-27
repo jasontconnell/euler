@@ -43,23 +43,29 @@ func Sum[N Number](list []N) N {
 	return init
 }
 
-func Divisors[N Number](n N, order bool) []N {
+func ProperDivisors[N Number](n N) []N {
+	d := Divisors(n)
+	return d[:len(d)-1]
+}
+
+func Divisors[N Number](n N) []N {
 	if IsPrime(n) {
 		return []N{1, n}
 	}
 
 	list := []N{}
-	for i := Sqrt(n); i >= 2; i-- {
+	for i := N(1); i < Sqrt(n)+1; i++ {
 		if n%i == 0 {
-			list = append(list, i, n/i)
+			list = append(list, i)
+			if i != n/i {
+				list = append(list, n/i)
+			}
 		}
 	}
-	list = append([]N{1}, list...)
-	if order {
-		sort.Slice(list, func(i, j int) bool {
-			return list[i] < list[j]
-		})
-	}
+
+	sort.Slice(list, func(i, j int) bool {
+		return list[i] < list[j]
+	})
 	return list
 }
 
